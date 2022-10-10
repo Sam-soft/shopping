@@ -1,7 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { debounceTime, of, switchMap } from "rxjs";
-import { ApiService } from "../api.service";
 import { CartService } from "../cart.service";
 
 @Component({
@@ -14,24 +12,14 @@ export class CartComponent implements OnInit {
   public value: any = ([]);
   isEdit: boolean = false
   newQuantity : number  =  0
-  decrementqty : number=1
-  incrementqty : number=1
   selectedIndex: number | undefined;
   constructor(public cartService: CartService,private router:Router) {}
 
   ngOnInit(): void {
  this.productlist = this.cartService.cartItemList
-    this.cartService.getProducts() 
-    // .pipe(
-    //   // debounceTime(1500),
-    //   // switchMap((value) => of(value))
-    //   )
-      .subscribe(res => {
-    //     this.productlist = res;
+    this.cartService.getProducts().subscribe(res => {
     this.cartService.cartItemList = res
-    //     let prdct = this.productlist.toString()
-    //       localStorage.setItem('products',prdct)
-    //       return localStorage.getItem("products")
+
     });
   }
   removeitem(item: any) {
@@ -67,14 +55,6 @@ export class CartComponent implements OnInit {
     }
     increment(idx : number){
       this.cartService.incrementqty(idx)
-      // this.productlist[idx].quantity +=  1
-      // this.incrementqty = this.productlist[idx].quantity
-      // // let incr = this.incrementqty.toString()
-
-      // this.productlist[idx].quantity = this.incrementqty
-      // this.productlist[idx].total =  this.productlist[idx].price * this.incrementqty
-      // // localStorage.setItem('increment',incr)
-      // // return localStorage.getItem("increment")
     }
   }
 
