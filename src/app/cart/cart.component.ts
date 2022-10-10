@@ -24,7 +24,6 @@ export class CartComponent implements OnInit {
   }
   removeitem(item: any) {
     this.cartService.removeCartItem(item);
-    console.log("service<<<<<<<>>>>>>>>>>>>>>", this.cartService);
   }
   emptycart() {
     this.cartService.removeAllCart();
@@ -32,24 +31,6 @@ export class CartComponent implements OnInit {
   goTohome(){
     this.router.navigate(["home"])
   }
-  // toggleEdit(qty : any =  null,idx: number =  -1,from : string = ''){
-  //   this.selectedIndex= idx
-  //   if(qty){
-  //     this.newQuantity =  qty
-  //   }
-  //   this.isEdit =  !this.isEdit
-  //   if(this.newQuantity === this.productlist[idx].quantity ) return
-   
-  //   if(from === "input"){
-  //     if(this.newQuantity == 0 || this.newQuantity < 0) {
-  //       this.removeitem(this.productlist[idx])
-  //        return
-  //     }else{
-  //       this.productlist[idx].quantity =  this.newQuantity
-  //       this.productlist[idx].total =   this.productlist[idx].price * this.newQuantity
-  //     }
-  //   }
-  // }
   decrement(idx: number){
   this.cartService.decrementqty(idx)
     }
