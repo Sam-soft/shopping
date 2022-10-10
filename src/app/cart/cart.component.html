@@ -1,0 +1,133 @@
+<app-navigation></app-navigation>
+<header class="bg-dark py-5">
+  <div class=" px-4 px-lg-5 my-5">
+      <div class="text-center text-white">
+
+          <h1 class="display-4 fw-bolder">Fetching Shop Data</h1>
+          <p class="lead fw-normal text-white-50 mb-0">You can buy what you wish for.</p>
+
+      </div>
+  </div>
+</header>
+
+<ng-container *ngIf="this.cartService.cartItemList.length != 0">
+  <div class="container">
+    <div class="card-table">
+      <div class="cart-product">
+        <table class="table table-responsive">
+          <thead>
+            <tr>
+              <th>Sr.No</th>
+              <th>Product Name</th>
+              <th>Product Image</th>
+              <th>Description</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Total</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+          <tbody >
+            <tr *ngFor="let item of this.cartService.cartItemList; let i = index">
+              <td>{{i+1}}</td>
+              <td>{{item.title}}</td>
+              <td><img style="width: 120px;" src="{{item.image}}" alt=""></td>
+              <td style="width: 25%;">
+                <marquee behavior="" direction="up">{{item.description}}</marquee></td>
+              <th style="width: 12%;">{{item.price}}</th>
+              <td style="width: 12%;">
+                <button class="btn btn-outline-warning" (click)="decrement(i)">-</button>
+                <span class="px-2">{{this.cartService.cartItemList[i].quantity}}</span>
+                 <!-- <a (click)="toggleEdit(item.quantity,i)" *ngIf="!isEdit  || selectedIndex != i"><label for="" class="px-2">{{item.quantity}} </label></a>
+                <label *ngIf="isEdit && selectedIndex == i" for=""><a  (click)="toggleEdit()">Change Quantity</a></label>
+                <input *ngIf="isEdit && selectedIndex == i" type="text" [(ngModel)]="newQuantity"  (focusout)="toggleEdit(null,i,'input')"> -->
+                <button class="btn btn-outline-success" (click)="increment(i)">+</button>
+              </td>
+              <td style="width: 12%;">{{item.total | number : '1.2-2'}}</td>
+              
+              <td>
+                  <button (click)="removeitem(item)" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+              </td>
+          </tr>
+          <tr>
+              <td colspan="4"></td>
+              <td><button (click)="emptycart()" class="btn btn-danger mt-auto">Empty Cart</button></td>
+              <td><button  class="btn btn-primary mt-auto" (click)="goTohome()">Shop More</button></td>
+              <td><button class="btn btn-success mt-auto">Checkout</button></td>
+              <!-- <td><strong>Grand Total : ${{grandTotal | number 4.1-5}}</strong></td> -->
+              <td><strong>Grand Total : ${{this.cartService.getTotalPrice()| number : '1.2-2'}}</strong></td>
+
+          </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="this.cartService.cartItemList.length == 0">
+  <div class="container">
+    <div class="card">
+      <h5 class="card-title">My Cart</h5>
+      <div class="card-body p-4">
+        <img
+          class="card-img"
+          src="https://img.freepik.com/free-vector/order-now-banner_52683-48697.jpg?w=2000"
+          alt="..."
+        />
+        <div class="text-center">
+          <h5 class="fw-bolder"></h5>
+          <h4>Your cart is empty !</h4>
+          <h6>Add item to it now</h6>
+        </div>
+      </div>
+      <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+        <div class="text-center">
+          <a class="btn btn-outline-dark mt-auto" href="#">Shopnow</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<!-- <section class="py-4">
+          <div class="container px-4 px-lg-5 mt-5">
+
+              <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 d-flex justify-content-around" >
+                <div class="col mb-8 " *ngFor="let item of products">
+                  <div class="card h-80">
+
+                          Product image
+                          <img class="card-img-top " src="{{item.image}}" alt="..." />
+                         Product details
+                         <div class="card-body p-4 flex-column">
+                              <div class="text-center">
+
+                                   Product name
+                                  <h5 class="fw-bolder">{{item.title}}</h5>
+                                  <p>{{item.description}}</p>
+                                   Product reviews
+                                  <div class="d-flex justify-content-center small text-warning mb-2">
+                                    <div class="bi-star-fill"></div>
+                                      <div class="bi-star-fill"></div>
+                                      <div class="bi-star-fill"></div>
+                                      <div class="bi-star-fill"></div>
+                                      <div class="bi-star-fill"></div>
+                                  </div>
+                                  Product price
+                                  <span class="text-muted text-decoration-line-through"><strong>Price</strong> $</span>
+                                  {{item.price}}
+                                </div>
+                          </div>
+                          Product actions
+                          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </section> -->
