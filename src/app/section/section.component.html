@@ -6,37 +6,40 @@
       <div
         class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-3 d-flex justify-content-around"
       >
-        <div class="col mb-8" *ngFor="let item of products">
-          <div class="card h-80">
-            <img class="card-img-top" src="{{item.image}}" alt="..." />
-            <div class="card-body p-4 flex-column">
-              <div class="text-center">
-                <h5 class="fw-bolder">{{item.title}}</h5>
-                <p>{{item.description}}</p>
-                <div
-                  class="d-flex justify-content-center small text-warning mb-2"
-                >
-                  <div class="bi-star-fill"></div>
-                  <div class="bi-star-fill"></div>
-                  <div class="bi-star-fill"></div>
-                  <div class="bi-star-fill"></div>
-                  <div class="bi-star-fill"></div>
+        <ng-container *ngFor="let item of filterCategory | searchFilter:searchKey:'title'"
+        >
+          <div class="col mb-8" >
+            <div class="card h-80">
+              <img class="card-img-top" src="{{item.image}}" alt="..." />
+              <div class="card-body p-4 flex-column">
+                <div class="text-center">
+                  <h5 class="fw-bolder">{{item.title}}</h5>
+                  <p>{{item.description}}</p>
+                  <div
+                    class="d-flex justify-content-center small text-warning mb-2"
+                  >
+                    <div class="bi-star-fill"></div>
+                    <div class="bi-star-fill"></div>
+                    <div class="bi-star-fill"></div>
+                    <div class="bi-star-fill"></div>
+                    <div class="bi-star-fill"></div>
+                  </div>
+                  <span class="text"><strong>Price:</strong> $</span>
+                  {{item.price}}
                 </div>
-                <span class="text"><strong>Price:</strong> $</span>
-                {{item.price}}
               </div>
-            </div>
-            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-              <div class="text-center">
-                <a
-                  class="btn btn-outline-dark mt-auto"
-                  (click)="addtocart(item)"
-                  >Add to cart</a
-                >
+              <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                <div class="text-center">
+                  <a
+                    class="btn btn-outline-dark mt-auto"
+                    (click)="addtocart(item)"
+                    >Add to cart</a
+                  >
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </ng-container>
       </div>
     </div>
   </section>

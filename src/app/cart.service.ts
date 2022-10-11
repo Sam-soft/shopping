@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Observable, of } from "rxjs";
+import { BehaviorSubject, Observable, of } from "rxjs";
 
 @Injectable({
   providedIn: "root",
@@ -9,7 +9,7 @@ export class CartService {
   public dcrmntqty: number = 1;
   public incrmntqty: number = 1;
   public totalItem: number = 0;
-
+  public search = new BehaviorSubject<string>("");
   constructor() {}
   getProducts(): Observable<any[]> {
     const strc = localStorage.getItem("savecartitem") || "[]";

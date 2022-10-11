@@ -7,10 +7,14 @@ import { CartService } from "../cart.service";
   styleUrls: ["./navigation.component.css"],
 })
 export class NavigationComponent implements OnInit {
-
+  public searchTerm !: string;
 
   constructor(private router: Router, public cartsrvc: CartService) {}
-
+  search(event:any){
+    this.searchTerm = (event.target as HTMLInputElement).value;
+    console.log(this.searchTerm);
+    this.cartsrvc.search.next(this.searchTerm);
+  }
   ngOnInit(): void {
 
    
@@ -30,4 +34,5 @@ export class NavigationComponent implements OnInit {
   goTogetyourbest(){
     this.router.navigate(['getyourbest'])
   }
+  
 }

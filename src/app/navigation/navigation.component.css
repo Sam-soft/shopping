@@ -1,0 +1,13 @@
+.form-control {
+    border-radius: 3px;
+    inline-size: 600px;
+    margin-inline-start: 20px;
+}
+
+.search-icon {
+    position: absolute;
+    z-index: 10;
+    inset-inline-end: 33%;
+    inset-block-start: 16px;
+    color: rgb(201, 67, 26);
+}

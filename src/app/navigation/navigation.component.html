@@ -44,9 +44,19 @@
             <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
           </ul>
         </li>
-
+        <div class="navbar-brand align-item-center d-flex">
+        
+  
+          <div class="form-group">
+              <input type="text" class="form-control" [(ngModel)]="searchTerm" (keyup)="search($event)" placeholder="search products">
+              <i class="bi-search search-icon"></i>    
+          </div>
+        </div>
         <li>
           <a class="nav-link" role="button" (click)="goToLogin()">Login</a>
+        </li>
+        <li>
+          
         </li>
       </ul>
       <form class="d-flex">

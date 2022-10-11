@@ -10,18 +10,36 @@ import { CartService } from "../cart.service";
 })
 export class SectionComponent implements OnInit {
   public products: any;
+  public filterCategory : any
+   searchKey:string ="";
   constructor(private api: ApiService, private cartsrvc: CartService) {}
 
   ngOnInit(): void {
     this.api.getproduct().subscribe((res) => {
       this.products = res;
-      this.products.forEach((a: any) =>
-        Object.assign(a, { quantity: 1, total: a.price })
-      );
+        this.filterCategory = res;
+      this.products.forEach((a:any) => {
+        
+        Object.assign(a,{quantity:1,total:a.price});
+      });
+      console.log(this.products)
     });
+
+    this.cartsrvc.search.subscribe((val:any)=>{
+      this.searchKey = val;
+    })
+  
   }
   addtocart(item: any) {
     this.cartsrvc.addToCart(item);
+  }
+  searchFilter(category:string){
+    this.filterCategory = this.products
+    .searchFilter((a:any)=>{
+      if(a.category == category || category==''){
+        return a;
+      }
+    })
   }
   darkMode() {
     let element = document.body;

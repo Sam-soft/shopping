@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-import { Route, RouterModule, Routes } from "@angular/router";
+import { RouterModule, Routes } from "@angular/router";
 
 import { AppComponent } from "./app.component";
 import { ShopComponent } from "./shop/shop.component";
@@ -12,6 +12,8 @@ import { SectionComponent } from "./section/section.component";
 import { CartComponent } from "./cart/cart.component";
 import { AboutComponent } from './about/about.component';
 import { FormsModule } from "@angular/forms";
+import { SearchFilterPipe } from './search-filter.pipe';
+
 
 const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch:'full' },
@@ -44,6 +46,7 @@ const routes: Routes = [
     SectionComponent,
     CartComponent,
     AboutComponent,
+    SearchFilterPipe,
   ],
   imports: [BrowserModule, RouterModule.forRoot(routes), HttpClientModule, FormsModule],
   providers: [],
