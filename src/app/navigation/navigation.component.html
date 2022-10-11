@@ -20,7 +20,7 @@
         <li class="nav-item">
           <a class="nav-link" role="button" (click)="goToabout()">About</a>
         </li>
-        <li class="nav-item dropdown">
+        <!-- <li class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle"
             id="navbarDropdown"
@@ -40,23 +40,24 @@
               >
             </li>
             <li><hr class="dropdown-divider" /></li>
-            <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-            <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
+            <li><a class="dropdown-item" >Fashion</a></li>
+            <li><a class="dropdown-item" >Electronics</a></li>
+            <li><a class="dropdown-item" >Jewelry</a></li>
           </ul>
-        </li>
-        <div class="navbar-brand align-item-center d-flex">
-        
-  
-          <div class="form-group">
-              <input type="text" class="form-control" [(ngModel)]="searchTerm" (keyup)="search($event)" placeholder="search products">
-              <i class="bi-search search-icon"></i>    
-          </div>
-        </div>
+        </li> -->
         <li>
           <a class="nav-link" role="button" (click)="goToLogin()">Login</a>
         </li>
         <li>
           
+          <div class="navbar-brand align-item-center d-flex">
+          
+    
+            <div class="form-group">
+                <input type="text" class="form-control" [(ngModel)]="searchTerm" (keyup)="search($event)" placeholder="search products">
+                <i class="bi-search search-icon"></i>    
+            </div>
+          </div>
         </li>
       </ul>
       <form class="d-flex">

@@ -1,6 +1,35 @@
 <ng-container>
   <!-- <button (click)="darkMode()">Darkmode</button>
   <button (click)="lightMode()">Lightmode</button> -->
+  <div class="card-top container-fluid">
+    <div class="container d-flex">
+        <div class="item">
+            <a type="button" (click)="filter('')">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7Em7CEwAZCof1fIoqr0Z-Jb92NmXM3LWXPGr8HJnD5iim_z5ZkjLT767CMPV8NePNSxM&usqp=CAU" alt="">
+                <h6>All products</h6>
+            </a>
+        </div>
+        <div class="item">
+            <a type="button" (click)="filter('electronics')">
+                <img src="https://logoisus.com/wp-content/uploads/2020/02/Electronics-Shop-Logo.jpg" alt="">
+                <h6>Electronics</h6>
+            </a>
+        </div>
+        <div class="item ">
+            <a type="button" (click)="filter('fashion')">
+                <img src="https://www.onlinelogomaker.com/blog/wp-content/uploads/2017/06/fashion-logos.jpg" alt="">
+                <h6>Fashion</h6>
+            </a>
+        </div>
+        <div class="item">
+            <a type="button" (click)="filter('jewelery')">
+                <img style="inline-size: 62px; margin-block-start: 5px;" src="https://static.vecteezy.com/system/resources/previews/008/282/998/non_2x/ring-jewelry-logo-icon-design-template-elegant-beauty-royal-flat-vector.jpg" alt="">
+                <h6>Jewllery</h6>
+            </a>
+        </div>
+    </div>
+</div>
+<app-header></app-header>
   <section class="py-4">
     <div class="container px-4 px-lg-5 mt-5">
       <div
